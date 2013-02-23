@@ -16,6 +16,18 @@ abbr     directory end
     action :delete
   end
 
+snippet  easy_install_package
+abbr     easy_install_package end
+  easy_install_package ${1} do
+    action :install
+  end
+
+snippet execute
+abbr    execute end
+  execute "${1:command}" do
+    action :run
+  end
+
 snippet  file_del
 abbr     file end
   file "${1:target}" do
@@ -38,6 +50,20 @@ snippet  link_del
 abbr     link end
   link "${1:target}" do
     action :delete
+  end
+
+snippet package
+abbr    package end
+  package "${1}" do
+    action :install
+  end
+
+snippet package_each
+abbr    package end
+  %w{${1} ${2}}.each do |package_name|
+    package package_name do
+      action :install
+    end
   end
 
 snippet  remote
@@ -79,3 +105,13 @@ abbr     script end
       ${2}
     EOH
   end
+
+snippet  template
+abbr     template end
+  template "${1}" do
+    source "${2}"
+    owner "${3}"
+    group "${4}"
+    mode "${5}"
+  end
+
