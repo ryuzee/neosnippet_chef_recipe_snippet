@@ -22,6 +22,12 @@ abbr     easy_install_package end
     action :install
   end
 
+snippet  apt_package
+abbr     apt_package end
+  apt_package ${1} do
+    action :install
+  end
+
 snippet execute
 abbr    execute end
   execute "${1:command}" do
@@ -113,5 +119,16 @@ abbr     template end
     owner "${3}"
     group "${4}"
     mode "${5}"
+  end
+
+snippet cron
+abbr    cron end
+  cron "${1}" do
+    minute "${2}"
+    hour "${3}"
+    day "${4}"
+    month "${5}"
+    weekday "${6}"
+    action :create
   end
 
