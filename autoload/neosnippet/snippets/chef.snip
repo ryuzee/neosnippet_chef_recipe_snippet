@@ -132,3 +132,20 @@ abbr    cron end
     action :create
   end
 
+snippet incr
+abbr    incr end
+  include_recipe "${1}"
+
+snippet dep
+abbr    dep end
+  depends "${1}"
+
+snippet mit
+abbr    mit end
+  # This software is released under the MIT License.
+  # http://opensource.org/licenses/mit-license.php
+
+snippet ft
+abbr    ft end
+  # vim: filetype=ruby.chef
+
