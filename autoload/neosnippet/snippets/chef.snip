@@ -180,3 +180,10 @@ abbr    notif end
 snippet subs
 abbr    subs end
   subscribes :${1}, resources("${2}")
+
+# Case
+snippet case_platform
+abbr    case_platform end
+  case node["platform"]
+  when "centos", "redhat", "amazon", "scientific", "fedora"
+  end
