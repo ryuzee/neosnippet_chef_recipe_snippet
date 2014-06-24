@@ -1,5 +1,6 @@
 include ruby.snip
 
+# Create directory
 snippet  directory
 abbr     directory end
   directory "${1:target}" do
@@ -9,6 +10,7 @@ abbr     directory end
     action :create
   end
 
+# Delete directory
 snippet  directory_del
 abbr     directory end
   directory "${1:target}" do
@@ -16,54 +18,63 @@ abbr     directory end
     action :delete
   end
 
+# Install python package
 snippet  easy_install_package
 abbr     easy_install_package end
   easy_install_package ${1} do
     action :install
   end
 
+# Install apt package
 snippet  apt_package
 abbr     apt_package end
   apt_package ${1} do
     action :install
   end
 
+# Execute command
 snippet execute
 abbr    execute end
   execute "${1:command}" do
     action :run
   end
 
+# Delete file
 snippet  file_del
 abbr     file end
   file "${1:target}" do
     action :delete
   end
 
+# Change file permission
 snippet  file_mode
 abbr     file end
   file "${1:target}" do
     mode 00644
   end
 
+# Create link
 snippet  link
 abbr     link end
   link "${1:source}" do
     to "${2:destination}"
   end
 
+# Delete link
 snippet  link_del
 abbr     link end
   link "${1:target}" do
     action :delete
   end
 
+# Single package
 snippet package
 abbr    package end
   package "${1}" do
     action :install
   end
 
+# Some packages
 snippet package_each
 abbr    package end
   %w{${1} ${2}}.each do |package_name|
@@ -72,6 +83,7 @@ abbr    package end
     end
   end
 
+# Remote file
 snippet  remote
 abbr     remote_file end
   remote_file "#{Chef::Config[:file_cache_path]}/${1}" do
@@ -80,6 +92,7 @@ abbr     remote_file end
     checksum ${4}
   end
 
+# Route Add
 snippet route_add
 abbr    route end
   route "${1:ip/mask}" do
@@ -87,6 +100,7 @@ abbr    route end
     device "${3:ethN}"
   end
 
+# Route Del
 snippet route_del
 abbr    route end
   route "${1:ip/mask}" do
@@ -94,6 +108,7 @@ abbr    route end
     action :delete
   end 
 
+# Service
 snippet  service
 abbr     service end
   service "${1:service_name}" do
@@ -101,6 +116,7 @@ abbr     service end
     action [ :enable, :start ]
   end 
 
+# Script
 snippet  script
 abbr     script end
   script "${1}" do
@@ -112,6 +128,7 @@ abbr     script end
     EOH
   end
 
+# Template
 snippet  template
 abbr     template end
   template "${1}" do
@@ -121,6 +138,7 @@ abbr     template end
     mode "${5}"
   end
 
+# Cron
 snippet cron
 abbr    cron end
   cron "${1}" do
@@ -132,20 +150,33 @@ abbr    cron end
     action :create
   end
 
+# Include recipe
 snippet incr
 abbr    incr end
   include_recipe "${1}"
 
+# depends (metadata.rb)
 snippet dep
 abbr    dep end
   depends "${1}"
 
+# Include MIT License
 snippet mit
 abbr    mit end
   # This software is released under the MIT License.
   # http://opensource.org/licenses/mit-license.php
 
+# Include filetype
 snippet ft
 abbr    ft end
   # vim: filetype=ruby.chef
 
+# Notification
+snippet notif
+abbr    notif end
+  notifies :${1}, "service[${2}]"
+
+# Subscribe
+snippet subs
+abbr    subs end
+  subscribes :${1}, resources("${2}")
