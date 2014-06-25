@@ -64,14 +64,12 @@ abbr     delete link
     action :delete
   end
 
-# Single package
 snippet package
 abbr    install single package
   package "${1}" do
     action :install
   end
 
-# Some packages
 snippet package_each
 abbr    install some packages
   %w{${1} ${2}}.each do |package_name|
@@ -80,7 +78,6 @@ abbr    install some packages
     end
   end
 
-# Remote file
 snippet  remote_file
 abbr     get remote file
   remote_file "#{Chef::Config[:file_cache_path]}/${1}" do
@@ -89,7 +86,6 @@ abbr     get remote file
     checksum ${4}
   end
 
-# Route Add
 snippet route_add
 abbr    add routing
   route "${1:ip/mask}" do
@@ -97,7 +93,6 @@ abbr    add routing
     device "${3:ethN}"
   end
 
-# Route Del
 snippet route_del
 abbr    delete route
   route "${1:ip/mask}" do
@@ -105,7 +100,6 @@ abbr    delete route
     action :delete
   end 
 
-# Service
 snippet  service
 abbr     service
   service "${1:service_name}" do
@@ -113,7 +107,6 @@ abbr     service
     action [ :enable, :start ]
   end 
 
-# Script
 snippet  script
 abbr     script
   script "${1}" do
@@ -125,7 +118,6 @@ abbr     script
     EOH
   end
 
-# Template
 snippet  template
 abbr     template
   template "${1}" do
@@ -135,7 +127,6 @@ abbr     template
     mode "${5}"
   end
 
-# Cron
 snippet cron
 abbr    cron
   cron "${1}" do
@@ -147,50 +138,41 @@ abbr    cron
     action :create
   end
 
-# Include recipe
 snippet incl
 abbr    include_recipe
   include_recipe "${1}"
 
-# depends (metadata.rb)
 snippet dep
 abbr    depends
   depends "${1}"
 
-# Include MIT License
 snippet mit
 abbr    MIT License 
   # This software is released under the MIT License.
   # http://opensource.org/licenses/mit-license.php
 
-# Include filetype
 snippet ft
 abbr    filetype 
   # vim: filetype=ruby.chef
 
-# Notification
 snippet notif
 abbr    notifies
   notifies :${1}, "service[${2}]"
 
-# Subscribe
 snippet subs
 abbr    subsribes
   subscribes :${1}, resources("${2}")
 
-# Case
 snippet case_platform
 abbr    case_platform
   case node["platform"]
   when "centos", "redhat", "amazon", "scientific", "fedora"
   end
  
-# Log
 snippet log
 abbr    log
   Chef::Log.info('${1}')
 
-# yum repository
 snippet yum_repo
 abbr    yum_repository
   yum_repository "${1}" do
@@ -200,7 +182,6 @@ abbr    yum_repository
     action :create
   end
 
-# apt repository
 snippet apt_repo
 abbr    apt_repository
   apt_repository "jenkins" do
@@ -211,12 +192,10 @@ abbr    apt_repository
     notifies :run, "execute[apt-get update]", :immediately
   end
 
-# File does not exist
 snippet not_exist
 abbr    not_exist
   not_if { ::File.exists?("${1}") }
 
-# File exists
 snippet only_exist
 abbr    only_exist
   only_if { ::File.exists?("${1}") }
