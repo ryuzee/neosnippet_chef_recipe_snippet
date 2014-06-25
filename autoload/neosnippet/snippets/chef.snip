@@ -125,7 +125,7 @@ abbr     service end
 
 # Script
 snippet  script
-abbr     script end
+abbr     script
   script "${1}" do
     interpreter "bash"
     user "root"
@@ -137,7 +137,7 @@ abbr     script end
 
 # Template
 snippet  template
-abbr     template end
+abbr     template
   template "${1}" do
     source "${2}"
     owner "${3}"
@@ -147,7 +147,7 @@ abbr     template end
 
 # Cron
 snippet cron
-abbr    cron end
+abbr    cron
   cron "${1}" do
     minute "${2}"
     hour "${3}"
@@ -159,50 +159,50 @@ abbr    cron end
 
 # Include recipe
 snippet incr
-abbr    incr end
+abbr    incr
   include_recipe "${1}"
 
 # depends (metadata.rb)
 snippet dep
-abbr    dep end
+abbr    dep
   depends "${1}"
 
 # Include MIT License
 snippet mit
-abbr    mit end
+abbr    mit
   # This software is released under the MIT License.
   # http://opensource.org/licenses/mit-license.php
 
 # Include filetype
 snippet ft
-abbr    ft end
+abbr    ft
   # vim: filetype=ruby.chef
 
 # Notification
 snippet notif
-abbr    notif end
+abbr    notif
   notifies :${1}, "service[${2}]"
 
 # Subscribe
 snippet subs
-abbr    subs end
+abbr    subs
   subscribes :${1}, resources("${2}")
 
 # Case
 snippet case_platform
-abbr    case_platform end
+abbr    case_platform
   case node["platform"]
   when "centos", "redhat", "amazon", "scientific", "fedora"
   end
  
 # Log
 snippet log
-abbr    log end
+abbr    log
   Chef::Log.info('${1}')
 
 # yum repository
 snippet yum_repo
-abbr    yum_repo end
+abbr    yum_repo
   yum_repository "${1}" do
     description "${2}"
     url "${3}"
@@ -212,7 +212,7 @@ abbr    yum_repo end
 
 # apt repository
 snippet apt_repo
-abbr    apt_repo end
+abbr    apt_repo
   apt_repository "jenkins" do
     uri "${1}"
     key "${2}"
@@ -223,10 +223,10 @@ abbr    apt_repo end
 
 # File does not exist
 snippet not_exist
-abbr    not_exist end
+abbr    not_exist
   not_if { ::File.exists?("${1}") }
 
 # File exists
 snippet only_exist
-abbr    only_exist end
+abbr    only_exist
   only_if { ::File.exists?("${1}") }
