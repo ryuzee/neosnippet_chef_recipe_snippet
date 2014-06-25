@@ -25,6 +25,13 @@ abbr     easy_install_package end
     action :install
   end
 
+# Install gem package
+snippet gem_package
+abbr    gem_package end
+  gem_package package_name do
+    action :install
+  end
+
 # Install apt package
 snippet  apt_package
 abbr     apt_package end
@@ -187,3 +194,39 @@ abbr    case_platform end
   case node["platform"]
   when "centos", "redhat", "amazon", "scientific", "fedora"
   end
+ 
+# Log
+snippet log
+abbr    log end
+  Chef::Log.info('${1}')
+
+# yum repository
+snippet yum_repo
+abbr    yum_repo end
+  yum_repository "${1}" do
+    description "${2}"
+    url "${3}"
+    gpgkey "${4}"
+    action :create
+  end
+
+# apt repository
+snippet apt_repo
+abbr    apt_repo end
+  apt_repository "jenkins" do
+    uri "${1}"
+    key "${2}"
+    components ["${3}/"]
+    action :add
+    notifies :run, "execute[apt-get update]", :immediately
+  end
+
+# File does not exist
+snippet not_exist
+abbr    not_exist end
+  not_if { ::File.exists?("${1}") }
+
+# File exists
+snippet only_exist
+abbr    only_exist end
+  only_if { ::File.exists?("${1}") }
