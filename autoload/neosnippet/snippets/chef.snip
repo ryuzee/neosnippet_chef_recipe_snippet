@@ -2,7 +2,7 @@ include ruby.snip
 
 # Create directory
 snippet  directory
-abbr     directory end
+abbr     directory
   directory "${1:target}" do
     owner "${2:owner}"
     group "${3:group}"
@@ -12,7 +12,7 @@ abbr     directory end
 
 # Delete directory
 snippet  directory_del
-abbr     directory end
+abbr     directory_del
   directory "${1:target}" do
     recursive true
     action :delete
@@ -20,70 +20,70 @@ abbr     directory end
 
 # Install python package
 snippet  easy_install_package
-abbr     easy_install_package end
+abbr     easy_install_package
   easy_install_package ${1} do
     action :install
   end
 
 # Install gem package
 snippet gem_package
-abbr    gem_package end
+abbr    gem_package
   gem_package package_name do
     action :install
   end
 
 # Install apt package
 snippet  apt_package
-abbr     apt_package end
+abbr     apt_package
   apt_package ${1} do
     action :install
   end
 
 # Execute command
 snippet execute
-abbr    execute end
+abbr    execute
   execute "${1:command}" do
     action :run
   end
 
 # Delete file
 snippet  file_del
-abbr     file end
+abbr     file_del
   file "${1:target}" do
     action :delete
   end
 
 # Change file permission
 snippet  file_mode
-abbr     file end
+abbr     file_mode
   file "${1:target}" do
     mode 00644
   end
 
 # Create link
 snippet  link
-abbr     link end
+abbr     link
   link "${1:source}" do
     to "${2:destination}"
   end
 
 # Delete link
 snippet  link_del
-abbr     link end
+abbr     link_del
   link "${1:target}" do
     action :delete
   end
 
 # Single package
 snippet package
-abbr    package end
+abbr    package
   package "${1}" do
     action :install
   end
 
 # Some packages
 snippet package_each
-abbr    package end
+abbr    package_each
   %w{${1} ${2}}.each do |package_name|
     package package_name do
       action :install
@@ -91,8 +91,8 @@ abbr    package end
   end
 
 # Remote file
-snippet  remote
-abbr     remote_file end
+snippet  remote_file
+abbr     remote_file
   remote_file "#{Chef::Config[:file_cache_path]}/${1}" do
     source "${2}"
     mode ${3}
@@ -101,7 +101,7 @@ abbr     remote_file end
 
 # Route Add
 snippet route_add
-abbr    route end
+abbr    route_add
   route "${1:ip/mask}" do
     gateway "${2:ip}"
     device "${3:ethN}"
@@ -109,7 +109,7 @@ abbr    route end
 
 # Route Del
 snippet route_del
-abbr    route end
+abbr    route_del
   route "${1:ip/mask}" do
     gateway "${2:ip}"
     action :delete
@@ -117,7 +117,7 @@ abbr    route end
 
 # Service
 snippet  service
-abbr     service end
+abbr     service
   service "${1:service_name}" do
     supports :status => true, :restart => true, :reload => true
     action [ :enable, :start ]
