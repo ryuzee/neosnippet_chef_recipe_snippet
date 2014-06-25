@@ -1,8 +1,7 @@
 include ruby.snip
 
-# Create directory
 snippet  directory
-abbr     directory
+abbr     create directory
   directory "${1:target}" do
     owner "${2:owner}"
     group "${3:group}"
@@ -10,80 +9,71 @@ abbr     directory
     action :create
   end
 
-# Delete directory
 snippet  directory_del
-abbr     directory_del
+abbr     delete directory
   directory "${1:target}" do
     recursive true
     action :delete
   end
 
-# Install python package
 snippet  easy_install_package
-abbr     easy_install_package
+abbr     install python package
   easy_install_package ${1} do
     action :install
   end
 
-# Install gem package
 snippet gem_package
-abbr    gem_package
+abbr    install gem package
   gem_package package_name do
     action :install
   end
 
-# Install apt package
 snippet  apt_package
-abbr     apt_package
+abbr     install apt package
   apt_package ${1} do
     action :install
   end
 
-# Execute command
 snippet execute
-abbr    execute
+abbr    execute command
   execute "${1:command}" do
     action :run
   end
 
-# Delete file
 snippet  file_del
-abbr     file_del
+abbr     delete file
   file "${1:target}" do
     action :delete
   end
 
-# Change file permission
 snippet  file_mode
-abbr     file_mode
+abbr     set file permission
   file "${1:target}" do
     mode 00644
   end
 
-# Create link
 snippet  link
-abbr     link
+abbr     create link
   link "${1:source}" do
     to "${2:destination}"
   end
 
-# Delete link
 snippet  link_del
-abbr     link_del
+abbr     delete link
   link "${1:target}" do
     action :delete
   end
 
 # Single package
 snippet package
-abbr    package
+abbr    install single package
   package "${1}" do
     action :install
   end
 
 # Some packages
 snippet package_each
-abbr    package_each
+abbr    install some packages
   %w{${1} ${2}}.each do |package_name|
     package package_name do
       action :install
@@ -92,7 +82,7 @@ abbr    package_each
 
 # Remote file
 snippet  remote_file
-abbr     remote_file
+abbr     get remote file
   remote_file "#{Chef::Config[:file_cache_path]}/${1}" do
     source "${2}"
     mode ${3}
@@ -101,7 +91,7 @@ abbr     remote_file
 
 # Route Add
 snippet route_add
-abbr    route_add
+abbr    add routing
   route "${1:ip/mask}" do
     gateway "${2:ip}"
     device "${3:ethN}"
@@ -109,7 +99,7 @@ abbr    route_add
 
 # Route Del
 snippet route_del
-abbr    route_del
+abbr    delete route
   route "${1:ip/mask}" do
     gateway "${2:ip}"
     action :delete
@@ -158,34 +148,34 @@ abbr    cron
   end
 
 # Include recipe
-snippet incr
-abbr    incr
+snippet incl
+abbr    include_recipe
   include_recipe "${1}"
 
 # depends (metadata.rb)
 snippet dep
-abbr    dep
+abbr    depends
   depends "${1}"
 
 # Include MIT License
 snippet mit
-abbr    mit
+abbr    MIT License 
   # This software is released under the MIT License.
   # http://opensource.org/licenses/mit-license.php
 
 # Include filetype
 snippet ft
-abbr    ft
+abbr    filetype 
   # vim: filetype=ruby.chef
 
 # Notification
 snippet notif
-abbr    notif
+abbr    notifies
   notifies :${1}, "service[${2}]"
 
 # Subscribe
 snippet subs
-abbr    subs
+abbr    subsribes
   subscribes :${1}, resources("${2}")
 
 # Case
@@ -202,7 +192,7 @@ abbr    log
 
 # yum repository
 snippet yum_repo
-abbr    yum_repo
+abbr    yum_repository
   yum_repository "${1}" do
     description "${2}"
     url "${3}"
@@ -212,7 +202,7 @@ abbr    yum_repo
 
 # apt repository
 snippet apt_repo
-abbr    apt_repo
+abbr    apt_repository
   apt_repository "jenkins" do
     uri "${1}"
     key "${2}"
