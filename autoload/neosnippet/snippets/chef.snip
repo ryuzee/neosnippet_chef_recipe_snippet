@@ -99,6 +99,10 @@ abbr     get remote file
   end
   ${0}
 
+snippet cache_path
+abbr    cache path
+  #{Chef::Config[:file_cache_path]}
+
 snippet route_add
 abbr    add routing
   route "${1:ip/mask}" do
@@ -120,6 +124,20 @@ abbr     service
   service "${1:service_name}" do
     supports :status => true, :restart => true, :reload => true
     action [ :enable, :start ]
+  end 
+  ${0}
+
+snippet  service_restart
+abbr     restart service
+  service "${1:service_name}" do
+    action :restart
+  end 
+  ${0}
+
+snippet  service_disabled
+abbr     disable service
+  service "${1:service_name}" do
+    action [ :stop, :disable ]
   end 
   ${0}
 
@@ -239,5 +257,22 @@ abbr    git
     repository "${2:repository_url}"
     reference "master" 
     action :sync 
+  end
+  ${0}
+
+snippet group 
+abbr    add group 
+  group '${1}' do
+    group_name '${2}'
+    gid        ${3}
+    action     :create
+  end
+  ${0}
+
+snippet group_del
+abbr    delete group 
+  group '${1}' do
+    group_name '${2}'
+    action     :delete
   end
   ${0}
