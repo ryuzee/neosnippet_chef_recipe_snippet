@@ -46,6 +46,17 @@ abbr    execute command
   end
   ${0}
 
+snippet file_content
+abbr    create file with content
+  file '${1:#:filename}' do
+    owner '${2:#:owner}'
+    group '${3:#:group}'
+    mode ${4:0644} 
+    content "${5:#:content}"
+    action :create
+  end
+  ${0}
+
 snippet  file_del
 abbr     delete file
   file "${1:#:file_name}" do
