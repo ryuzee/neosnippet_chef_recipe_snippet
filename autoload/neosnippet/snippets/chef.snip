@@ -327,3 +327,52 @@ abbr    reload ohai
     action :reload
   end
   ${0}
+
+snippet data_bag_item
+alias   dbi
+  ${1:var} = data_bag_item("${2:#:data_bag_name}", "${3:#:key_name}")
+  ${0}
+
+snippet platform?
+alias   pl
+  if platform?(${1:#:comma_separated_os_name})
+    ${2}
+  end
+  ${0}
+
+snippet platform_family?
+alias   pf
+  if platform_family?("${1:redhat}")
+    ${2}
+  end
+  ${0}
+
+snippet chef_gem
+abbr    install gem into chef
+  chef_gem "${1:#:gem_name}" do
+    action ${2::install}
+  end
+  ${0}
+
+snippet chef_handler
+  chef_handler "${1:#:handler_name}" do
+    source "${2:#:source}"
+    action ${3::enable}
+  end
+  ${0}
+
+snippet env
+abbr    set environment variable
+  env "${1:#:env_key}" do
+    value "${2:#:env_value}"
+  end
+  ${0}
+
+snippet ruby_block
+alias   rb
+  ruby_block "${1:#:block_name}" do
+    block do
+      ${2}
+    end
+  end
+  ${0}
