@@ -299,3 +299,17 @@ abbr    delete group
     action     :delete
   end
   ${0}
+
+snippet user
+abbr    add user
+  user "${1:user}" do
+    gid ${2:gid}
+    uid ${3:uid}
+    home "${4:home}"
+    shell "${5:shell}"
+    password "${6:password}"
+    supports :manage_home => true
+    action   [:create, :manage]
+  end
+  ${0}
+
