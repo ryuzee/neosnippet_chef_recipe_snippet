@@ -81,12 +81,35 @@ abbr    install single package
   end
   ${0}
 
+snippet package_version
+abbr    install package with version
+  package "${1:package_name}" do
+    action :install
+    version "${2}"
+  end
+  ${0}
+
+snippet package_from_file
+abbr    install package from file
+  package "${1:package_name}" do
+    action :install
+    source "${2:source}"
+  end
+  ${0}
+
 snippet package_each
 abbr    install some packages
   %w{${1} ${2}}.each do |package_name|
     package package_name do
       action :install
     end
+  end
+  ${0}
+
+snippet package_remove
+abbr    remove package
+  package "${1:package_name}" do
+    action :remove
   end
   ${0}
 
