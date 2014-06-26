@@ -8,6 +8,7 @@ abbr     create directory
     mode 00755
     action :create
   end
+  ${0}
 
 snippet  directory_del
 abbr     delete directory
@@ -15,60 +16,70 @@ abbr     delete directory
     recursive true
     action :delete
   end
+  ${0}
 
 snippet  easy_install_package
 abbr     install python package
   easy_install_package ${1} do
     action :install
   end
+  ${0}
 
 snippet gem_package
 abbr    install gem package
   gem_package package_name do
     action :install
   end
+  ${0}
 
 snippet  apt_package
 abbr     install apt package
   apt_package ${1} do
     action :install
   end
+  ${0}
 
 snippet execute
 abbr    execute command
   execute "${1:command}" do
     action :run
   end
+  ${0}
 
 snippet  file_del
 abbr     delete file
   file "${1:target}" do
     action :delete
   end
+  ${0}
 
 snippet  file_mode
 abbr     set file permission
   file "${1:target}" do
     mode 00644
   end
+  ${0}
 
 snippet  link
 abbr     create link
   link "${1:source}" do
     to "${2:destination}"
   end
+  ${0}
 
 snippet  link_del
 abbr     delete link
   link "${1:target}" do
     action :delete
   end
+  ${0}
 
 snippet package
 abbr    install single package
   package "${1}" do
     action :install
   end
+  ${0}
 
 snippet package_each
 abbr    install some packages
@@ -77,6 +88,7 @@ abbr    install some packages
       action :install
     end
   end
+  ${0}
 
 snippet  remote_file
 abbr     get remote file
@@ -85,6 +97,7 @@ abbr     get remote file
     mode ${3}
     checksum ${4}
   end
+  ${0}
 
 snippet route_add
 abbr    add routing
@@ -92,6 +105,7 @@ abbr    add routing
     gateway "${2:ip}"
     device "${3:ethN}"
   end
+  ${0}
 
 snippet route_del
 abbr    delete route
@@ -99,6 +113,7 @@ abbr    delete route
     gateway "${2:ip}"
     action :delete
   end 
+  ${0}
 
 snippet  service
 abbr     service
@@ -106,6 +121,7 @@ abbr     service
     supports :status => true, :restart => true, :reload => true
     action [ :enable, :start ]
   end 
+  ${0}
 
 snippet  script
 abbr     script
@@ -117,6 +133,7 @@ abbr     script
       ${2}
     EOH
   end
+  ${0}
 
 snippet  template
 abbr     template
@@ -126,6 +143,7 @@ abbr     template
     group "${4}"
     mode "${5}"
   end
+  ${0}
 
 snippet cron
 abbr    cron
@@ -137,6 +155,7 @@ abbr    cron
     weekday "${6}"
     action :create
   end
+  ${0}
 
 snippet incl
 abbr    include_recipe
@@ -150,10 +169,12 @@ snippet mit
 abbr    MIT License 
   # This software is released under the MIT License.
   # http://opensource.org/licenses/mit-license.php
+  ${0}
 
 snippet ft
 abbr    filetype 
   # vim: filetype=ruby.chef
+  ${0}
 
 snippet notif
 abbr    notifies
@@ -167,11 +188,13 @@ snippet case_platform
 abbr    case_platform
   case node["platform"]
   when "centos", "redhat", "amazon", "scientific", "fedora"
+    ${0}
   end
  
 snippet log
 abbr    log
   Chef::Log.info('${1}')
+  ${0}
 
 snippet yum_repo
 abbr    yum_repository
@@ -181,6 +204,7 @@ abbr    yum_repository
     gpgkey "${4}"
     action :create
   end
+  ${0}
 
 snippet apt_repo
 abbr    apt_repository
@@ -191,6 +215,7 @@ abbr    apt_repository
     action :add
     notifies :run, "execute[apt-get update]", :immediately
   end
+  ${0}
 
 snippet not_exist
 abbr    not_exist
@@ -199,3 +224,11 @@ abbr    not_exist
 snippet only_exist
 abbr    only_exist
   only_if { ::File.exists?("${1}") }
+
+snippet cookbook_file
+abbr    cookbook_file
+  cookbook_file "${1:fullname}" do
+    source "${2:source}"
+    mode ${3:mode} 
+  end
+  ${0}
