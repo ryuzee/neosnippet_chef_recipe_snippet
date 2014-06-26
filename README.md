@@ -1,13 +1,12 @@
-neosnippet_chef_recipe_snippet
-==============================
+# neosnippet_chef_recipe_snippet
 
 This is vim snippet for Chef. You can use this snippet with NeoSnippets.
 
-<img src="http://www.ryuzee.com/work/chef_snippet.png" style="margin:2px" />
+<a href="http://www.ryuzee.com/work/chef_snippet.png"><img src="http://www.ryuzee.com/work/chef_snippet.png" /></a>
 
-# Install
+## Install
 
-## Bundle
+### Bundle
 
 Add a line as follow.
 
@@ -17,7 +16,7 @@ Then install snippet.
 
 	:BundleInstall
 
-# Usage
+## Usage
 
 Set filetype as follow
 
