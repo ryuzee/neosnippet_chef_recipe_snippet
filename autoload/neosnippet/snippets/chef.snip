@@ -376,3 +376,10 @@ alias   rb
     end
   end
   ${0}
+
+snippet node
+  node['${1:#:root_name}']['${2:#:key}']${0}
+
+snippet default 
+  default['${1:#:root_name}']['${2:#:key}'] = ${3:#:val}
+  
