@@ -232,3 +232,12 @@ abbr    cookbook_file
     mode ${3:mode} 
   end
   ${0}
+
+snippet git
+abbr    git
+  git "${1:directory}" do 
+    repository "${2:repository_url}"
+    reference "master" 
+    action :sync 
+  end
+  ${0}
