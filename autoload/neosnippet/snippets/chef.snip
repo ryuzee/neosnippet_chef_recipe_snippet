@@ -313,3 +313,10 @@ abbr    add user
   end
   ${0}
 
+snippet http_request
+abbr    send http request
+  http_request "${1:name}" do
+    url "${2:url}"
+    action :get
+  end
+  ${0}
