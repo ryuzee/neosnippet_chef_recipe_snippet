@@ -51,7 +51,7 @@ abbr    create file with content
   file '${1:#:filename}' do
     owner '${2:#:owner}'
     group '${3:#:group}'
-    mode ${4:0644} 
+    mode ${4:0644}
     content "${5:#:content}"
     action :create
   end
