@@ -3,6 +3,8 @@ neosnippet_chef_recipe_snippet
 
 This is vim snippet for Chef. You can use this snippet with NeoSnippets.
 
+<img src="http://www.ryuzee.com/work/chef_snippet.png" />
+
 # Install
 
 ## Bundle
