@@ -2,7 +2,7 @@
 
 This is vim snippet for Chef. You can use this snippet with NeoSnippets.
 
-<img src="https://gist.github.com/ryuzee/7b02a2a1026b57614835/raw/2a238c0ff067f55dd212ff60b8dbf289f56ceb00/chef_snippet.png" />
+<img src="http://www.ryuzee.com/contents/blog/wp-content/uploads/2014/06/chef_snippet.png" />
 
 ## Install
 
