@@ -1,395 +1,397 @@
 include ruby.snip
 
-snippet  directory
-abbr     create directory
-  directory '${1:#:directory_name}' do
-    owner '${2:#:owner}'
-    group '${3:#:group}'
-    mode ${4:00755}
-    action ${5::create}
-  end
-  ${0}
+snippet directory
+abbr create directory
+	directory '${1:#:directory_name}' do
+		owner '${2:#:owner}'
+		group '${3:#:group}'
+		mode ${4:00755}
+		action ${5::create}
+	end
+	${0}
 
-snippet  directory_del
-abbr     delete directory
-  directory '${1:#:directory_name}' do
-    recursive ${2:true}
-    action :delete
-  end
-  ${0}
+snippet directory_del
+abbr delete directory
+	directory '${1:#:directory_name}' do
+		recursive ${2:true}
+		action :delete
+	end
+	${0}
 
-snippet  easy_install_package
-abbr     install python package
-  easy_install_package ${1:#:package_name} do
-    action :install
-  end
-  ${0}
+snippet easy_install_package
+abbr install python package
+	easy_install_package ${1:#:package_name} do
+		action :install
+	end
+	${0}
 
 snippet gem_package
-abbr    install gem package
-  gem_package ${1:#:package_name} do
-    action :install
-  end
-  ${0}
+abbr install gem package
+	gem_package ${1:#:package_name} do
+		action :install
+	end
+	${0}
 
-snippet  apt_package
-abbr     install apt package
-  apt_package ${1:#:package_name} do
-    action :install
-  end
-  ${0}
+snippet apt_package
+abbr install apt package
+	apt_package ${1:#:package_name} do
+		action :install
+	end
+	${0}
 
 snippet execute
-abbr    execute command
-  execute '${1:#:command}' do
-    action :run
-  end
-  ${0}
+abbr execute command
+	execute '${1:#:command}' do
+		action :run
+	end
+	${0}
 
 snippet file_content
-abbr    create file with content
-  file '${1:#:filename}' do
-    owner '${2:#:owner}'
-    group '${3:#:group}'
-    content '${4:#:content}'
-    action ${5::create}
-  end
-  ${0}
+abbr create file with content
+	file '${1:#:filename}' do
+		owner '${2:#:owner}'
+		group '${3:#:group}'
+		content '${4:#:content}'
+		action ${5::create}
+	end
+	${0}
 
-snippet  file_del
-abbr     delete file
-  file '${1:#:file_name}' do
-    action :delete
-  end
-  ${0}
+snippet file_del
+abbr delete file
+	file '${1:#:file_name}' do
+		action :delete
+	end
+	${0}
 
-snippet  file_mode
-abbr     set file permission
-  file '${1:#:file_name}' do
-    mode ${2:00644}
-  end
-  ${0}
+snippet file_mode
+abbr set file permission
+	file '${1:#:file_name}' do
+		mode ${2:00644}
+	end
+	${0}
 
-snippet  link
-abbr     create link
-  link '${1:#:source}' do
-    to '${2:#:destination}'
-  end
-  ${0}
+snippet link
+abbr create link
+	link '${1:#:source}' do
+		to '${2:#:destination}'
+	end
+	${0}
 
-snippet  link_del
-abbr     delete link
-  link '${1:#:name}' do
-    action :delete
-  end
-  ${0}
+snippet link_del
+abbr delete link
+	link '${1:#:name}' do
+		action :delete
+	end
+	${0}
 
 snippet package
-abbr    install single package
-  package '${1:#:package_name}' do
-    action :install
-  end
-  ${0}
+abbr install single package
+	package '${1:#:package_name}' do
+		action :install
+	end
+	${0}
 
 snippet package_version
-abbr    install package with version
-  package '${1:#:package_name}' do
-    action :install
-    version '${2:#:package_version}'
-  end
-  ${0}
+abbr install package with version
+	package '${1:#:package_name}' do
+		action :install
+		version '${2:#:package_version}'
+	end
+	${0}
 
 snippet package_from_file
-abbr    install package from file
-  package '${1:#:package_name}' do
-    action :install
-    source '${2:#:source}'
-  end
-  ${0}
+abbr install package from file
+	package '${1:#:package_name}' do
+		action :install
+		source '${2:#:source}'
+	end
+	${0}
 
 snippet package_each
-abbr    install some packages
-  %w{${1:#:package_name_arr}}.each do |package_name|
-    package package_name do
-      action :install
-    end
-  end
-  ${0}
+abbr install some packages
+	%w{${1:#:package_name_arr}}.each do |package_name|
+		package package_name do
+			action :install
+		end
+	end
+	${0}
 
 snippet package_remove
-abbr    remove package
-  package '${1:#:package_name}' do
-    action :remove
-  end
-  ${0}
+abbr remove package
+	package '${1:#:package_name}' do
+		action :remove
+	end
+	${0}
 
-snippet  remote_file
-abbr     get remote file
-  remote_file "#{Chef::Config[:file_cache_path]}/${1:#:save_file_name}" do
-    source '${2:#:source_url}'
-    mode ${3:0644}
-    checksum '${4:#:checksum}'
-  end
-  ${0}
+snippet remote_file
+abbr get remote file
+	remote_file "#{Chef::Config[:file_cache_path]}/${1:#:save_file_name}" do
+		source '${2:#:source_url}'
+		mode ${3:0644}
+		checksum '${4:#:checksum}'
+	end
+	${0}
 
 snippet cache_path
-abbr    cache path
-  #{Chef::Config[:file_cache_path]}
+abbr cache path
+	#{Chef::Config[:file_cache_path]}
 
 snippet route_add
-abbr    add routing
-  route '${1:#:ip/mask}' do
-    gateway '${2:#:ip}'
-    device '${3:#:ethN}'
-  end
-  ${0}
+abbr add routing
+	route '${1:#:ip/mask}' do
+		gateway '${2:#:ip}'
+		device '${3:#:ethN}'
+	end
+	${0}
 
 snippet route_del
-abbr    delete route
-  route '${1:#:ip/mask}' do
-    gateway '${2:#:ip}'
-    action :delete
-  end
-  ${0}
+abbr delete route
+	route '${1:#:ip/mask}' do
+		gateway '${2:#:ip}'
+		action :delete
+	end
+	${0}
 
-snippet  service
-abbr     service
-  service '${1:#:service_name}' do
-    supports :status => true, :restart => true, :reload => true
-    action [ :enable, :start ]
-  end
-  ${0}
+snippet service
+abbr service
+	service '${1:#:service_name}' do
+		supports :status => true, :restart => true, :reload => true
+		action [ :enable, :start ]
+	end
+	${0}
 
-snippet  service_restart
-abbr     restart service
-  service '${1:#:service_name}' do
-    action :restart
-  end
-  ${0}
+snippet service_restart
+abbr restart service
+	service '${1:#:service_name}' do
+		action :restart
+	end
+	${0}
 
-snippet  service_disabled
-abbr     disable service
-  service '${1:#:service_name}' do
-    action [ :stop, :disable ]
-  end
-  ${0}
+snippet service_disabled
+abbr disable service
+	service '${1:#:service_name}' do
+		action [ :stop, :disable ]
+	end
+	${0}
 
-snippet  script
-abbr     script
-  script '${1:#:script_title}' do
-    interpreter '${2:bash}'
-    user 'root'
-    cwd
-    code <<-EOH
-      ${3}
-    EOH
-  end
-  ${0}
+snippet script
+abbr script
+	script '${1:#:script_title}' do
+		interpreter '${2:bash}'
+		user 'root'
+		cwd
+		code <<-EOH
+			${3}
+		EOH
+	end
+	${0}
 
-snippet  template
-abbr     template
-  template '${1:#:path_to_store}' do
-    source '${2:#:source_name}'
-    owner '${3:#:owner}'
-    group '${4:#:group}'
-    mode '${5:00644}'
-  end
-  ${0}
+snippet template
+abbr template
+	template '${1:#:path_to_store}' do
+		source '${2:#:source_name}'
+		owner '${3:#:owner}'
+		group '${4:#:group}'
+		mode '${5:00644}'
+	end
+	${0}
 
 snippet cron
-abbr    cron
-  cron '${1:#:command}' do
-    minute  '${2:0}'
-    hour    '${3:*}'
-    day     '${4:*}'
-    month   '${5:*}'
-    weekday '${6:*}'
-    action :create
-  end
-  ${0}
+abbr cron
+	cron '${1:#:command}' do
+		minute  '${2:0}'
+		hour    '${3:*}'
+		day     '${4:*}'
+		month   '${5:*}'
+		weekday '${6:*}'
+		action :create
+	end
+	${0}
 
 snippet incl
-abbr    include_recipe
-  include_recipe '${1:#:recipe_name}'
+abbr include_recipe
+	include_recipe '${1:#:recipe_name}'
 
 snippet dep
-abbr    depends
-  depends '${1:#:cookbook_name}'
+abbr depends
+	depends '${1:#:cookbook_name}'
 
 snippet mit
-abbr    MIT License
-  # This software is released under the MIT License.
-  # http://opensource.org/licenses/mit-license.php
-  ${0}
+abbr MIT License
+	# This software is released under the MIT License.
+	# http://opensource.org/licenses/mit-license.php
+	${0}
 
 snippet ft
-abbr    filetype
-  # vim: filetype=ruby.chef
-  ${0}
+abbr filetype
+	# vim: filetype=ruby.chef
+	${0}
 
 snippet notif
-abbr    notifies
-  notifies ${1::restart}, 'service[${2:#:service_name}]'${0}
+abbr notifies
+	notifies ${1::restart}, 'service[${2:#:service_name}]'${0}
 
 snippet subs
-abbr    subsribes
-  subscribes ${1::restart}, 'template[${2:#:template_name}]'
+abbr subsribes
+	subscribes ${1::restart}, 'template[${2:#:template_name}]'
 
 snippet case_platform
-abbr    case_platform
-  case node['platform']
-  when 'centos', 'redhat', 'amazon', 'scientific', 'fedora'
-    ${0}
-  end
+abbr case_platform
+	case node['platform']
+	when 'centos', 'redhat', 'amazon', 'scientific', 'fedora'
+		${0}
+	end
 
 snippet log
-abbr    log
-  Chef::Log.info('${1:#:message}')
-  ${0}
+abbr log
+	Chef::Log.info('${1:#:message}')
+	${0}
 
 snippet yum_repo
-abbr    yum_repository
-  yum_repository '${1:#:repository_name}' do
-    description '${2:#:description}'
-    url '${3:#:url}'
-    gpgkey '${4:#:gpgkey}'
-    action ${5::create}
-  end
-  ${0}
+abbr yum_repository
+	yum_repository '${1:#:repository_name}' do
+		description '${2:#:description}'
+		url '${3:#:url}'
+		gpgkey '${4:#:gpgkey}'
+		action ${5::create}
+	end
+	${0}
 
 snippet apt_repo
-abbr    apt_repository
-  apt_repository '${1:#:repository_name}' do
-    uri '${2:#:url}'
-    key '${3:#:gpgkey}'
-    components ['${4:#:components}/']
-    action :add
-    notifies :run, 'execute[apt-get update]', :immediately
-  end
-  ${0}
+abbr apt_repository
+	apt_repository '${1:#:repository_name}' do
+		uri '${2:#:url}'
+		key '${3:#:gpgkey}'
+		components ['${4:#:components}/']
+		action :add
+		notifies :run, 'execute[apt-get update]', :immediately
+	end
+	${0}
 
 snippet not_exist
-abbr    not_exist
-  not_if { ::File.exists?('${1:#:file_path}') }
+abbr not_exist
+	not_if { ::File.exists?('${1:#:file_path}') }
 
 snippet only_exist
-abbr    only_exist
-  only_if { ::File.exists?('${1:#:file_path}') }
+abbr		only_exist
+	only_if { ::File.exists?('${1:#:file_path}') }
 
 snippet cookbook_file
-abbr    cookbook_file
-  cookbook_file '${1:#:fullname}' do
-    source '${2:#:source}'
-    mode ${3:00644}
-  end
-  ${0}
+abbr cookbook_file
+	cookbook_file '${1:#:fullname}' do
+		source '${2:#:source}'
+		mode ${3:00644}
+	end
+	${0}
 
 snippet git
-abbr    git
-  git '${1:#:directory}' do
-    repository '${2:#:repository_url}'
-    reference 'master'
-    action :sync
-  end
-  ${0}
+abbr git
+	git '${1:#:directory}' do
+		repository '${2:#:repository_url}'
+		reference 'master'
+		action :sync
+	end
+	${0}
 
 snippet group
-abbr    add group
-  group '${1:#:group_title}' do
-    group_name '${2:#:group_name}'
-    gid        ${3:#:gid}
-    action     :create
-  end
-  ${0}
+abbr add group
+	group '${1:#:group_title}' do
+		group_name '${2:#:group_name}'
+		gid				${3:#:gid}
+		action		 :create
+	end
+	${0}
 
 snippet group_del
-abbr    delete group
-  group '${1:#:group_title}' do
-    group_name '${2:#:group_name}'
-    action     :delete
-  end
-  ${0}
+abbr delete group
+	group '${1:#:group_title}' do
+		group_name '${2:#:group_name}'
+		action		 :delete
+	end
+	${0}
 
 snippet user
-abbr    add user
-  user '${1:#:user}' do
-    gid ${2:#:gid}
-    uid ${3:#:uid}
-    home '${4:#:home_path}'
-    shell '${5:#:shell}'
-    password '${6:#:password}'
-    supports :manage_home => true
-    action   [:create, :manage]
-  end
-  ${0}
+abbr add user
+	user '${1:#:user}' do
+		gid ${2:#:gid}
+		uid ${3:#:uid}
+		home '${4:#:home_path}'
+		shell '${5:#:shell}'
+		password '${6:#:password}'
+		supports :manage_home => true
+		action	 [:create, :manage]
+	end
+	${0}
 
 snippet http_request
-abbr    send http request
-  http_request '${1:#:name}' do
-    url '${2:#:url}'
-    action :get
-  end
-  ${0}
+abbr send http request
+	http_request '${1:#:name}' do
+		url '${2:#:url}'
+		action :get
+	end
+	${0}
 
 snippet ohai_reload
-abbr    reload ohai
-  ohai 'reload' do
-    action :reload
-  end
-  ${0}
+abbr reload ohai
+	ohai 'reload' do
+		action :reload
+	end
+	${0}
 
 snippet data_bag_item
-alias   dbi
-  ${1:var} = data_bag_item('${2:#:data_bag_name}', '${3:#:key_name}')
-  ${0}
+alias dbi
+	${1:var} = data_bag_item('${2:#:data_bag_name}', '${3:#:key_name}')
+	${0}
 
 snippet platform?
-alias   pl
-  if platform?(${1:#:comma_separated_os_name})
-    ${2}
-  end
-  ${0}
+alias pl
+	if platform?(${1:#:comma_separated_os_name})
+		${2}
+	end
+	${0}
 
 snippet platform_family?
-alias   pf
-  if platform_family?('${1:redhat}')
-    ${2}
-  end
-  ${0}
+alias pf
+	if platform_family?('${1:redhat}')
+		${2}
+	end
+	${0}
 
 snippet chef_gem
-abbr    install gem into chef
-  chef_gem '${1:#:gem_name}' do
-    action ${2::install}
-  end
-  ${0}
+abbr install gem into chef
+	chef_gem '${1:#:gem_name}' do
+		action ${2::install}
+	end
+	${0}
 
 snippet chef_handler
-  chef_handler '${1:#:handler_name}' do
-    source '${2:#:source}'
-    action ${3::enable}
-  end
-  ${0}
+	chef_handler '${1:#:handler_name}' do
+		source '${2:#:source}'
+		action ${3::enable}
+	end
+	${0}
 
 snippet env
-abbr    set environment variable
-  env '${1:#:env_key}' do
-    value '${2:#:env_value}'
-  end
-  ${0}
+abbr set environment variable
+	env '${1:#:env_key}' do
+		value '${2:#:env_value}'
+	end
+	${0}
 
 snippet ruby_block
-alias   rb
-  ruby_block '${1:#:block_name}' do
-    block do
-      ${2}
-    end
-  end
-  ${0}
+alias rb
+	ruby_block '${1:#:block_name}' do
+		block do
+			${2}
+		end
+	end
+	${0}
 
 snippet node
-  node['${1:#:root_name}']['${2:#:key}']${0}
+	node['${1:#:root_name}']['${2:#:key}']${0}
 
 snippet default
-  default['${1:#:root_name}']['${2:#:key}'] = ${3:#:val}
+	default['${1:#:root_name}']['${2:#:key}'] = ${3:#:val}
 
+
+# vim: ts=2 noexpandtab
