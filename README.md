@@ -11,7 +11,6 @@ This is vim snippet for Chef. You can use this snippet with NeoSnippets.
 Add these lines as follows.
 
 	Bundle 'ryuzee/neocomplcache_php_selenium_snippet'
-	let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets'
 
 Then install snippet.
 
