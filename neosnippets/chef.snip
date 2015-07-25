@@ -186,6 +186,17 @@ abbr script
 	end
 	${0}
 
+snippet bash
+abbr bash
+	bash '${1:#:script_title}' do
+		user 'root'
+		cwd
+		code <<-EOH
+			${3}
+		EOH
+	end
+	${0}
+
 snippet template
 abbr template
 	template '${1:#:path_to_store}' do
@@ -393,5 +404,10 @@ snippet node
 snippet default
 	default['${1:#:root_name}']['${2:#:key}'] = ${3:#:val}
 
+snippet supports
+abbr indidate list of operatings systems to support
+	%w{redhat centos scientific fedora amazon}.each do |os|
+		supports os
+	end
 
 # vim: ts=2 noexpandtab
